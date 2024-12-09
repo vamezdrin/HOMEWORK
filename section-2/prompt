@@ -1,2 +1,0 @@
-max@ws01:~$ PS1='[terraform-server]'
-[terraform-server] PS1='[\d]\u@\h'
