@@ -1,0 +1,4 @@
+Команда - sudo add-apt-repository --remove universe
+
+После обновить список пакетов:
+sudo apt update

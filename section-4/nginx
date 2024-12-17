@@ -1,0 +1,5 @@
+Пакеты в apt не устанавливались (выдавал ошибку) пока я не ввел команду
+sudo apt install --fix-broken
+
+После чего пакет nginx установился:
+sudo apt install -f nginx 
