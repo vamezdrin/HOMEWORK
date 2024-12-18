@@ -1,0 +1,2 @@
+Удаление пакета:
+sudo apt remove -y libjs-jquery-jush
