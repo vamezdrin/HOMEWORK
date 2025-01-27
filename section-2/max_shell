@@ -1,0 +1,2 @@
+max@ws01:~$ echo $SHELL
+/usr/bin/bash
