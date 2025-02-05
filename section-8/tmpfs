@@ -1,0 +1,11 @@
+
+Сначала нужно создать каталог монтирования
+sudo mkdir /mnt/tmp-data
+
+Монтируем файловую систему в каталог /mnt/tmp-data и ограничиваем разме 100М
+sudo mount -t tmpfs -o size=100M tmpfs /mnt/tmp-data
+
+Проверка и результат:
+df -h /mnt/tmp-data
+Filesystem Size Used Avail Use%  Mounted on
+tmpfs      100M    0  100M   0%  /mnt/tmp-data

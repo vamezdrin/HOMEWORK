@@ -1,0 +1,29 @@
+Помечаем диск sdb для использования в LVM
+sudo pvcreate /dev/sdb
+
+Создаем группу томов volume1, состоящуу из тома sdb
+sudo vgcreate "volume1" /dev/sdb
+
+Создаем логический том storage, использующий 100% обема диска sdb
+sudo lvcreate -l 100%FREE -n storage volume1
+
+Перед созданием файловой системы пришлось установить xfsprogs, иначе эта файловая система не монтировалась
+sudoapt install xfsprogs
+
+Создаем файловую систему XFS в /dev/volume1/storage
+sudo mkfs.xfs /dev/volume1/storage
+
+моздаю каталог для монтирования
+sudo mkdir /mnt/storage
+
+Монтирую созданный согический диск с файловой системой в созданный каталог /storage (точку монтирования)
+sudo mount -t xfs /dev/volume1/storage /mnt/storage
+
+Для того, чтобы создать вхождение /etc/fstab для автоматического монтирования при загрузке, необходимо получить UUID диска командой
+lsblk -f
+
+Далее неободимо открыть текстовым редактором /etc/fstab
+sudo nano /etc/fstab
+
+И записать строку в конец файла
+UUID=bddbd21d-5ff7-4a91-962a-4553c9440c54   /mnt/storage    xfs  default   0   0
